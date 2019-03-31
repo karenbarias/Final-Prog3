@@ -53,6 +53,11 @@ namespace Final.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (empleados.FechaIngreso.ToString().Equals(""))
+                    empleados.FechaIngreso = DateTime.Now;
+                var codigo = empleados.FechaIngreso.Value.Year * 10000 + empleados.ID;
+                empleados.CodigoEmpleado = codigo.ToString();
+                empleados.Estatus = "Activo";
                 db.Empleados.Add(empleados);
                 db.SaveChanges();
                 return RedirectToAction("Index");
