@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="1fbec67e645e41f784d4436681b352ed" Name="Diagram1">
+        <EntityTypeShape EntityType="RecursosHumanosModel.CalculoNomina" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecursosHumanosModel.Cargos" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecursosHumanosModel.Departamentos" Width="1.5" PointX="0.75" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecursosHumanosModel.Empleados" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecursosHumanosModel.Licencias" Width="1.5" PointX="5.25" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecursosHumanosModel.Permisos" Width="1.5" PointX="5.25" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecursosHumanosModel.SalidaEmpleados" Width="1.5" PointX="5.25" PointY="7.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="RecursosHumanosModel.Vacaciones" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <AssociationConnector Association="RecursosHumanosModel.FK__Empleados__Cargo__3E52440B" ManuallyRouted="false" />
+        <AssociationConnector Association="RecursosHumanosModel.FK__Empleados__Depar__3D5E1FD2" ManuallyRouted="false" />
+        <AssociationConnector Association="RecursosHumanosModel.FK__Licencias__Emple__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="RecursosHumanosModel.FK__Permisos__Emplea__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="RecursosHumanosModel.FK__SalidaEmp__Emple__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="RecursosHumanosModel.FK__Vacacione__Emple__4E88ABD4" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
