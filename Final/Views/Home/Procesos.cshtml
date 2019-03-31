@@ -1,0 +1,50 @@
+﻿
+@{
+	ViewBag.Title = "Procesos";
+}
+
+<div class="jumbotron">
+	<h1>Módulo de Procesos</h1>
+	<p class="lead">Configurar procesos y acciones: cálculo de nómina, salida de empleados, vacaciones, permisos y licencias.</p>
+</div>
+
+<div class="row">
+	<div class="col-md-4">
+		<h2>Cálculo de nómina</h2>
+		<p>
+			Calcular el monto total de la nómina.
+		</p>
+		@Html.ActionLink("Empleados »", "Index", "Empleados", new { @class = "btn btn-default" })
+	</div>
+	<div class="col-md-4">
+		<h2>Salida de empleados</h2>
+		<p>
+			Inactivar a un determinado empleado.
+		</p>
+		@Html.ActionLink("Departamentos »", "Index", "Departamentos", new { @class = "btn btn-default" })
+	</div>
+	<div class="col-md-4">
+		<h2>Vacaciones</h2>
+		<p>
+			Registrar las vacaciones que tome un empleado.
+		</p>
+		@Html.ActionLink("Cargos »", "Index", "Cargos", new { @class = "btn btn-default" })
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4">
+		<h2>Permisos</h2>
+		<p>
+			Registrar los permisos que tome un empleado.
+		</p>
+		@Html.ActionLink("Empleados »", "Index", "Empleados", new { @class = "btn btn-default" })
+	</div>
+	<div class="col-md-4">
+		<h2>Licencias</h2>
+		<p>
+			Registrar las licencias que tome un empleado.
+		</p>
+		@Html.ActionLink("Departamentos »", "Index", "Departamentos", new { @class = "btn btn-default" })
+	</div>
+</div>
+

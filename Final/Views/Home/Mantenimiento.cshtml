@@ -1,0 +1,34 @@
+﻿
+@{
+	ViewBag.Title = "Mantenimiento";
+}
+
+<div class="jumbotron">
+	<h1>Módulo de Mantenimiento</h1>
+	<p class="lead">Crear, ver, modificar y eliminar los empleados, departamentos y cargos de la empresa.</p>
+</div>
+
+<div class="row">
+	<div class="col-md-4">
+		<h2>Empleados</h2>
+		<p>
+			Crear, ver, modificar y eliminar empleados.
+		</p>
+		@Html.ActionLink("Empleados »", "Index", "Empleados", new { @class = "btn btn-default" })
+	</div>
+	<div class="col-md-4">
+		<h2>Departamentos</h2>
+		<p>
+			Crear, ver, modificar y eliminar departamentos.
+		</p>
+		@Html.ActionLink("Departamentos »", "Index", "Departamentos", new { @class = "btn btn-default" })
+	</div>
+	<div class="col-md-4">
+		<h2>Cargos</h2>
+		<p>
+			Crear, ver, modificar y eliminar cargos.
+		</p>
+		@Html.ActionLink("Cargos »", "Index", "Cargos", new { @class = "btn btn-default" })
+	</div>
+</div>
+

@@ -1,0 +1,73 @@
+﻿
+@{
+	ViewBag.Title = "Informes";
+}
+
+<div class="jumbotron">
+	<h1>Informes</h1>
+	<p class="lead">Generar y revisar  informes de: nóminas, empleados activos, empleados inactivos, departamentos, cargos y permisos. </p>
+</div>
+
+<div class="row">
+	<div class="col-md-4">
+		<h2>Nóminas</h2>
+		<p>
+			Visualizar todas las nóminas de un año o mes especificado.
+		</p>
+		@Html.ActionLink("Mantenimiento »", "Mantenimiento", "Home", new { @class = "btn btn-default" })
+	</div>
+	<div class="col-md-4">
+		<h2>Empleados activos</h2>
+		<p>
+			Visualizar los empleados activos de la empresa y filtrarllos por nombre o departamento.
+		</p>
+		@Html.ActionLink("Procesos »", "Procesos", "Home", new { @class = "btn btn-default" })
+	</div>
+	<div class="col-md-4">
+		<h2>Empleados inactivos</h2>
+		<p>
+			Visualizar los empleados que han salido de la empresa.
+		</p>
+		@Html.ActionLink("Informes »", "Informes", "Home", new { @class = "btn btn-default" })
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4">
+		<h2>Departamentos</h2>
+		<p>
+			Listar los departamentos creados.
+		</p>
+		@Html.ActionLink("Mantenimiento »", "Mantenimiento", "Home", new { @class = "btn btn-default" })
+	</div>
+	<div class="col-md-4">
+		<h2>Cargos</h2>
+		<p>
+			Listar los cargos creados.
+		</p>
+		@Html.ActionLink("Procesos »", "Procesos", "Home", new { @class = "btn btn-default" })
+	</div>
+	<div class="col-md-4">
+		<h2>Permisos</h2>
+		<p>
+			Visualizar los permisos tomados por determinado empleado.
+		</p>
+		@Html.ActionLink("Informes »", "Informes", "Home", new { @class = "btn btn-default" })
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-4">
+		<h2>Entradas de empleados</h2>
+		<p>
+			Visualizar las entradas(empleados creados, ingresados) en un mes determinado.
+		</p>
+		@Html.ActionLink("Mantenimiento »", "Mantenimiento", "Home", new { @class = "btn btn-default" })
+	</div>
+	<div class="col-md-4">
+		<h2>Salida de empleados</h2>
+		<p>
+			Visualizar los empleados inactivados en un mes determinado.
+		</p>
+		@Html.ActionLink("Procesos »", "Procesos", "Home", new { @class = "btn btn-default" })
+	</div>
+</div>
+
