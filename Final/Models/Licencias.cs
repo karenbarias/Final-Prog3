@@ -21,8 +21,8 @@ namespace Final.Models
         public Nullable<System.DateTime> Desde { get; set; }
         [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> Hasta { get; set; }
-        public Nullable<int> CorrespondienteA { get; set; }
         public string Comentarios { get; set; }
+        public string Motivo { get; set; }
     
         public virtual Empleados Empleados { get; set; }
     }

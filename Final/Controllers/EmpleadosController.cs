@@ -138,7 +138,7 @@ namespace Final.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult Salida(string empleado, string optradio, string motivo, string fecha, SalidaEmpleados salida)
+        public ActionResult Salida(string empleado, string optradio, string motivo, string fecha)
         {
             if (!String.IsNullOrEmpty(empleado))
             {
@@ -148,40 +148,51 @@ namespace Final.Controllers
                     var query = (from e in db.Empleados
                                  where e.CodigoEmpleado == emp
                                  select e).First();
-                    query.Estatus = "Inactivo";
-                    db.SaveChanges();
 
                     if (query.Estatus.Equals("Inactivo"))
                     {
-                        ViewBag.Estatus = query.Nombre + " " + query.Apellido + " inactivado con éxito";
+                        ViewBag.Estatus = query.Nombre + " " + query.Apellido + " ya ha sido inactivado previamente";                        
+                    }
+                    else
+                    {
                         try
                         {
-                            salida.Empleado = query.ID;
-                            salida.Motivo = motivo;
-                            salida.FechaSalida =Convert.ToDateTime(fecha);
+                            query.Estatus = "Inactivo";
+                            string s = "";
                             switch (optradio)
                             {
-                                case "d1": salida.TipoSalida = "Despido";
+                                case "d1":
+                                    s = "Despido";
                                     break;
-                                case "d2": salida.TipoSalida = "Desahucio";
+                                case "d2":
+                                    s = "Desahucio";
                                     break;
-                                case "d3": salida.TipoSalida = "Renuncia";
+                                case "d3":
+                                    s = "Renuncia";
                                     break;
                             }
-
+                            SalidaEmpleados salida = new SalidaEmpleados
+                            {
+                                Empleado = query.ID,
+                                Motivo = motivo,
+                                FechaSalida = Convert.ToDateTime(fecha),
+                                TipoSalida = s
+                            };
+                            db.SalidaEmpleados.Add(salida);
+                            db.SaveChanges();
+                            ViewBag.Estatus = query.Nombre + " " + query.Apellido + " inactivado con éxito";
                         }
                         catch (Exception ex)
                         {
-                            ViewBag.Estatus = " no guardado en trabla salida /n"+ex;
-                        }                        
-
-                    }else ViewBag.Estatus = emp + " no guardado en trabla salida /n";
+                            ViewBag.Estatus = query.Nombre + " " + query.Apellido + " no pudo ser inactivado";
+                        }
+                        
+                    }
                 }                
                 catch(Exception ex)
                 {
                     ViewBag.Estatus = emp + " no encontrado";
-                }
-                
+                }               
 
             }
             

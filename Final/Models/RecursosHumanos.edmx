@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="RecursosHumanosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="RecursosHumanosModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="CalculoNomina">
           <Key>
             <PropertyRef Name="ID" />
@@ -52,7 +52,7 @@
           <Property Name="Empleado" Type="int" />
           <Property Name="Desde" Type="date" />
           <Property Name="Hasta" Type="date" />
-          <Property Name="CorrespondienteA" Type="int" />
+          <Property Name="Motivo" Type="varchar" MaxLength="50" />
           <Property Name="Comentarios" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="Permisos">
@@ -63,7 +63,6 @@
           <Property Name="Empleado" Type="int" />
           <Property Name="Desde" Type="datetime" />
           <Property Name="Hasta" Type="datetime" />
-          <Property Name="CorrespondienteA" Type="int" />
           <Property Name="Comentarios" Type="varchar" MaxLength="50" />
         </EntityType>
         <EntityType Name="SalidaEmpleados">
@@ -111,7 +110,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Licencias__Emple__5812160E">
+        <Association Name="FK__Licencias__Emple__5CD6CB2B">
           <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1" />
           <End Role="Licencias" Type="Self.Licencias" Multiplicity="*" />
           <ReferentialConstraint>
@@ -123,7 +122,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Permisos__Emplea__534D60F1">
+        <Association Name="FK__Permisos__Emplea__60A75C0F">
           <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1" />
           <End Role="Permisos" Type="Self.Permisos" Multiplicity="*" />
           <ReferentialConstraint>
@@ -135,7 +134,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SalidaEmp__Emple__4AB81AF0">
+        <Association Name="FK__SalidaEmp__Emple__45F365D3">
           <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1" />
           <End Role="SalidaEmpleados" Type="Self.SalidaEmpleados" Multiplicity="*" />
           <ReferentialConstraint>
@@ -147,7 +146,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__Vacacione__Emple__4E88ABD4">
+        <Association Name="FK__Vacacione__Emple__49C3F6B7">
           <End Role="Empleados" Type="Self.Empleados" Multiplicity="0..1" />
           <End Role="Vacaciones" Type="Self.Vacaciones" Multiplicity="*" />
           <ReferentialConstraint>
@@ -176,25 +175,24 @@
             <End Role="Departamentos" EntitySet="Departamentos" />
             <End Role="Empleados" EntitySet="Empleados" />
           </AssociationSet>
-          <AssociationSet Name="FK__Licencias__Emple__5812160E" Association="Self.FK__Licencias__Emple__5812160E">
+          <AssociationSet Name="FK__Licencias__Emple__5CD6CB2B" Association="Self.FK__Licencias__Emple__5CD6CB2B">
             <End Role="Empleados" EntitySet="Empleados" />
             <End Role="Licencias" EntitySet="Licencias" />
           </AssociationSet>
-          <AssociationSet Name="FK__Permisos__Emplea__534D60F1" Association="Self.FK__Permisos__Emplea__534D60F1">
+          <AssociationSet Name="FK__Permisos__Emplea__60A75C0F" Association="Self.FK__Permisos__Emplea__60A75C0F">
             <End Role="Empleados" EntitySet="Empleados" />
             <End Role="Permisos" EntitySet="Permisos" />
           </AssociationSet>
-          <AssociationSet Name="FK__SalidaEmp__Emple__4AB81AF0" Association="Self.FK__SalidaEmp__Emple__4AB81AF0">
+          <AssociationSet Name="FK__SalidaEmp__Emple__45F365D3" Association="Self.FK__SalidaEmp__Emple__45F365D3">
             <End Role="Empleados" EntitySet="Empleados" />
             <End Role="SalidaEmpleados" EntitySet="SalidaEmpleados" />
           </AssociationSet>
-          <AssociationSet Name="FK__Vacacione__Emple__4E88ABD4" Association="Self.FK__Vacacione__Emple__4E88ABD4">
+          <AssociationSet Name="FK__Vacacione__Emple__49C3F6B7" Association="Self.FK__Vacacione__Emple__49C3F6B7">
             <End Role="Empleados" EntitySet="Empleados" />
             <End Role="Vacaciones" EntitySet="Vacaciones" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="RecursosHumanosModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -253,9 +251,9 @@
           <Property Name="Empleado" Type="Int32" />
           <Property Name="Desde" Type="DateTime" Precision="0" />
           <Property Name="Hasta" Type="DateTime" Precision="0" />
-          <Property Name="CorrespondienteA" Type="Int32" />
           <Property Name="Comentarios" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Empleados" Relationship="Self.FK__Licencias__Emple__5812160E" FromRole="Licencias" ToRole="Empleados" />
+          <Property Name="Motivo" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Permisos">
           <Key>
@@ -265,7 +263,6 @@
           <Property Name="Empleado" Type="Int32" />
           <Property Name="Desde" Type="DateTime" Precision="3" />
           <Property Name="Hasta" Type="DateTime" Precision="3" />
-          <Property Name="CorrespondienteA" Type="Int32" />
           <Property Name="Comentarios" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="Empleados" Relationship="Self.FK__Permisos__Emplea__534D60F1" FromRole="Permisos" ToRole="Empleados" />
         </EntityType>
@@ -450,11 +447,11 @@
           <EntitySetMapping Name="Licencias">
             <EntityTypeMapping TypeName="RecursosHumanosModel.Licencias">
               <MappingFragment StoreEntitySet="Licencias">
+                <ScalarProperty Name="Motivo" ColumnName="Motivo" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="Empleado" ColumnName="Empleado" />
                 <ScalarProperty Name="Desde" ColumnName="Desde" />
                 <ScalarProperty Name="Hasta" ColumnName="Hasta" />
-                <ScalarProperty Name="CorrespondienteA" ColumnName="CorrespondienteA" />
                 <ScalarProperty Name="Comentarios" ColumnName="Comentarios" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -466,7 +463,6 @@
                 <ScalarProperty Name="Empleado" ColumnName="Empleado" />
                 <ScalarProperty Name="Desde" ColumnName="Desde" />
                 <ScalarProperty Name="Hasta" ColumnName="Hasta" />
-                <ScalarProperty Name="CorrespondienteA" ColumnName="CorrespondienteA" />
                 <ScalarProperty Name="Comentarios" ColumnName="Comentarios" />
               </MappingFragment>
             </EntityTypeMapping>

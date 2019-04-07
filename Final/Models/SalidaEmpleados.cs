@@ -18,8 +18,8 @@ namespace Final.Models
         public int ID { get; set; }
         public Nullable<int> Empleado { get; set; }
         public string TipoSalida { get; set; }
-        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public string Motivo { get; set; }
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> FechaSalida { get; set; }
     
         public virtual Empleados Empleados { get; set; }

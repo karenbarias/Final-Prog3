@@ -34,7 +34,7 @@ namespace Final.Models
         public string Telefono { get; set; }
         public Nullable<int> Departamento { get; set; }
         public Nullable<int> Cargo { get; set; }
-        [DisplayFormat(DataFormatString ="{0:dd/MM/yyyy}",ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public Nullable<System.DateTime> FechaIngreso { get; set; }
         [Required]
         public Nullable<decimal> Salario { get; set; }
