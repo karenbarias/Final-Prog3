@@ -137,5 +137,55 @@ namespace Final.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult Salida(string empleado, string optradio, string motivo, string fecha, SalidaEmpleados salida)
+        {
+            if (!String.IsNullOrEmpty(empleado))
+            {
+                string emp = empleado;
+                try
+                {
+                    var query = (from e in db.Empleados
+                                 where e.CodigoEmpleado == emp
+                                 select e).First();
+                    query.Estatus = "Inactivo";
+                    db.SaveChanges();
+
+                    if (query.Estatus.Equals("Inactivo"))
+                    {
+                        ViewBag.Estatus = query.Nombre + " " + query.Apellido + " inactivado con éxito";
+                        try
+                        {
+                            salida.Empleado = query.ID;
+                            salida.Motivo = motivo;
+                            salida.FechaSalida =Convert.ToDateTime(fecha);
+                            switch (optradio)
+                            {
+                                case "d1": salida.TipoSalida = "Despido";
+                                    break;
+                                case "d2": salida.TipoSalida = "Desahucio";
+                                    break;
+                                case "d3": salida.TipoSalida = "Renuncia";
+                                    break;
+                            }
+
+                        }
+                        catch (Exception ex)
+                        {
+                            ViewBag.Estatus = " no guardado en trabla salida /n"+ex;
+                        }                        
+
+                    }else ViewBag.Estatus = emp + " no guardado en trabla salida /n";
+                }                
+                catch(Exception ex)
+                {
+                    ViewBag.Estatus = emp + " no encontrado";
+                }
+                
+
+            }
+            
+            return View();
+        }
     }
 }
