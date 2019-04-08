@@ -35,7 +35,7 @@
 		<div class="form-group">
 			@Html.Label("Fecha de salida: ", htmlAttributes: new { @class = "control-label col-md-2" })
 			<div class="col-md-10">
-				@Html.TextBox("fecha", "", htmlAttributes: new { @class = "form-control" })
+				@Html.TextBox("fecha",DateTime.Now.ToShortDateString(), htmlAttributes: new { @class = "form-control" })
 			</div>
 		</div>
 

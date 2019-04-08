@@ -15,9 +15,19 @@ namespace Final.Controllers
         private RecursosHumanosEntities db = new RecursosHumanosEntities();
 
         // GET: Empleados
-        public ActionResult Index()
+        public ActionResult Index(string optradio, string nombre, string dep)
         {
-            var empleados = db.Empleados.Include(e => e.Cargos).Include(e => e.Departamentos);
+            var empleados = db.Empleados.Where(e => e.Estatus == "Activo").Include(e => e.Cargos).Include(e => e.Departamentos);
+            switch (optradio)
+            {
+                case "nombre": empleados = empleados.Where(e => e.Nombre == nombre || e.Apellido == nombre);
+                    break;
+                case "dep": empleados = empleados.Where(e => e.Departamentos.CodigoDepartamento == dep||
+                e.Departamentos.Nombre == dep);
+                    break;
+                default: empleados = empleados;
+                    break;                    
+            }
             return View(empleados.ToList());
         }
 
@@ -197,6 +207,54 @@ namespace Final.Controllers
             }
             
             return View();
+        }
+
+        public ActionResult Inactivos()
+        {
+            var empleados = db.Empleados.Where(e => e.Estatus == "Inactivo").Include(e => e.Cargos).Include(e => e.Departamentos);
+            return View(empleados.ToList());
+        }
+
+        public ActionResult Entradas(string optradio, string emes, string omes, string anio)
+        {
+            int mes = DateTime.Now.Month;
+            int ano = DateTime.Now.Year;            
+
+            if (optradio == "este")
+            {
+                mes = Int32.Parse(emes);
+
+            }else if(optradio == "otro")
+            {
+                mes = Int32.Parse(omes);
+                ano = Int32.Parse(anio);
+            }
+
+            var empleados = db.Empleados.Where(e => e.FechaIngreso.Value.Month == mes
+                    && e.FechaIngreso.Value.Year == ano);
+
+            return View(empleados);
+        }
+
+        public ActionResult Salidas(string optradio, string emes, string omes, string anio)
+        {
+            int mes = DateTime.Now.Month;
+            int ano = DateTime.Now.Year;
+
+            if (optradio == "este")
+            {
+                mes = Int32.Parse(emes);
+            }
+            else if (optradio == "otro")
+            {
+                mes = Int32.Parse(omes);
+                ano = Int32.Parse(anio);
+            }
+
+            var empleados = db.SalidaEmpleados.Where(e => e.FechaSalida.Value.Month == mes
+                    && e.FechaSalida.Value.Year == ano);
+
+            return View(empleados);
         }
     }
 }

@@ -1,0 +1,78 @@
+﻿@model IEnumerable<Final.Models.SalidaEmpleados>
+@{
+	ViewBag.Title = "Salidas";
+}
+
+<h2>Salidas</h2>
+@using (Html.BeginForm())
+{
+	<h4>Filtrar: </h4>
+	<table>
+		<tr>
+			<td>
+				<label class="radio-inline">
+					@Html.RadioButton("optradio", "este", true) Mes de este año:
+				</label>
+			</td>
+			<td style="padding:5px">
+				<label class="radio-inline">
+					@Html.RadioButton("optradio", "otro") Mes de otro año:
+				</label>
+			</td>
+		</tr>
+		<tr>
+			<td style="padding:5px">
+				@Html.TextBox("emes", DateTime.Now.Month, htmlAttributes: new { @class = "form-control" })
+			</td>
+			<td>
+				<div class="input-group">
+					<span class="input-group-addon">Mes:&nbsp;</span>
+					@Html.TextBox("omes", DateTime.Now.Month, htmlAttributes: new { @class = "form-control" })
+				</div>
+				<div style="margin:2px"></div>
+				<div class="input-group">
+					<span class="input-group-addon">Año:&ensp;</span>
+					@Html.TextBox("anio", DateTime.Now.Year, htmlAttributes: new { @class = "form-control" })
+				</div>
+				<div style="margin:2px"></div>
+			</td>
+			<td style="padding:5px">
+				<input type="submit" value="Filtrar" class="btn btn-default" />
+			</td>
+		</tr>
+	</table>
+}
+<table class="table">
+	<tr>
+		<td>
+			@Html.DisplayNameFor(model=>model.Empleados.CodigoEmpleado)
+		</td>
+		<td>
+			@Html.DisplayNameFor(model=>model.FechaSalida)
+		</td>
+		<td>
+			@Html.DisplayNameFor(model=>model.TipoSalida)
+		</td>
+		<td>
+			@Html.DisplayNameFor(model=>model.Motivo)
+		</td>
+	</tr>
+	@foreach(var item in Model)
+	{
+	<tr>
+		<td>
+			@Html.DisplayFor(modelItem => item.Empleados.CodigoEmpleado)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.FechaSalida)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.TipoSalida)
+		</td>
+		<td>
+			@Html.DisplayFor(modelItem => item.Motivo)
+		</td>
+	</tr>
+	}
+	
+</table>

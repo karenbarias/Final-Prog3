@@ -17,20 +17,6 @@ namespace Final.Controllers
             return View();
         }
 
-        public ActionResult About()
-        {
-            ViewBag.Message = "Your application description page.";
-
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            ViewBag.Message = "Your contact page.";
-
-            return View();
-        }
-
         public ActionResult Mantenimiento()
         {
             return View();
@@ -63,6 +49,36 @@ namespace Final.Controllers
             db.SaveChanges();
             
             return View();
+        }
+
+        public ActionResult Nominas(string anio, string mes, string optradio)
+        {
+            int m = DateTime.Now.Month;
+            int a = DateTime.Now.Year;
+
+            var nominas = from n in db.CalculoNomina
+                          where n.Anio == a
+                          orderby n.Mes descending
+                          select n;
+            
+            if (optradio=="mes")
+            {
+                m = Int32.Parse(mes);                
+                nominas = from n in db.CalculoNomina
+                          where n.Mes == m 
+                          && n.Anio == a
+                          orderby n.Mes descending
+                          select n ;
+            }else if (optradio=="anio")
+            {
+                a = Int32.Parse(anio);
+                nominas = from n in db.CalculoNomina
+                          where n.Anio == a
+                          orderby n.Anio descending
+                          select n;
+            }
+
+            return View(nominas);
         }
     }
 }

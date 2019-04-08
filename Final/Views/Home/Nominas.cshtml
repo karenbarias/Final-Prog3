@@ -1,0 +1,66 @@
+﻿@model IEnumerable<Final.Models.CalculoNomina>
+@{
+	ViewBag.Title = "Nominas";
+}
+
+<h2>Nominas</h2>
+<p>
+	@using (Html.BeginForm())
+	{
+		<table>
+			<tr>
+				<td>
+					<label class="radio-inline">
+						@Html.RadioButton("optradio", "mes") Mes:
+					</label>
+				</td>
+				<td style="padding:5px">
+					<label class="radio-inline">
+						@Html.RadioButton("optradio", "anio", true) Año:
+					</label>
+				</td>
+				<td></td>
+			</tr>
+			<tr>
+				<td>
+					@Html.TextBox("mes", DateTime.Now.Month, htmlAttributes: new { @type = "number", @class = "form-control" })
+				</td>
+				<td style="padding:5px">
+					@Html.TextBox("anio", DateTime.Now.Year, htmlAttributes: new { @type = "number", @class = "form-control" })
+				</td>
+				<td>
+					<input type="submit" value="Filtrar" class="btn btn-default" />
+				</td>
+			</tr>
+		</table>
+
+	}
+</p>
+<table class="table">
+	<tr>
+		<th>
+			@Html.DisplayNameFor(model => model.Anio)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.Mes)
+		</th>
+		<th>
+			@Html.DisplayNameFor(model => model.MontoTotal)
+		</th>
+	</tr>
+	@foreach (var item in Model)
+	{
+		<tr>
+			<td>
+				@Html.DisplayFor(modelItem=>item.Anio)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem=>item.Mes)
+			</td>
+			<td>
+				@Html.DisplayFor(modelItem=>item.MontoTotal)
+			</td>
+		</tr>
+	}
+</table>
+
